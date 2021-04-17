@@ -1,28 +1,74 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div id="app">
+		<PageLoader></PageLoader>
+
+		<h1>Discover</h1>
+
+		<div class="grid-wrapper">
+			<Card
+				v-for="(card, index) in cards"
+				:key="'card' + index"
+				:item="card"
+				:index="index"
+			></Card>
+		</div>
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Card from "./components/Card";
+import PageLoader from "./components/PageLoader";
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+	components: {
+		Card,
+		PageLoader
+	},
+	name: "App",
+	data: () => {
+		return {
+			cards: [
+				{ img: "/1.jpg", grid: "card-2-1" },
+				{ img: "/2.jpg", grid: "card-1-1" },
+				{ img: "/3.jpg", grid: "card-1-1" },
+				{ img: "/4.jpg", grid: "card-2-1" },
+				{ img: "/5.jpg", grid: "card-1-1" },
+				{ img: "/6.jpg", grid: "card-1-1" },
+        { img: "/7.jpg", grid: "card-2-1" },
+				{ img: "/8.jpg", grid: "card-1-1" },
+				{ img: "/9.jpg", grid: "card-1-1" },
+				{ img: "/10.jpg", grid: "card-2-1" },
+				{ img: "/11.jpg", grid: "card-1-1" },
+				{ img: "/12.jpg", grid: "card-1-1" }
+			]
+		};
+	}
+};
 </script>
 
 <style>
+* {
+	font-size: 1rem;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+h1 {
+	font-size: 2rem;
+}
+body {
+	width: 100%;
+	font-family: "Segoe UI", Tahoma;
+	background-color: #efefef;
+	color: #333;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+	padding: 10px;
+	width: 100%;
+	min-height: 100vh;
+}
+.grid-wrapper {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 10px;
 }
 </style>
